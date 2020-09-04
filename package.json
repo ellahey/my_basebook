@@ -9,5 +9,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nedbase/code-challenge-basebook.git"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/json-server --watch db.json"
   }
 }
