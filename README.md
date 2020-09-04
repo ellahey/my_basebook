@@ -16,7 +16,7 @@ Maak een aparte (private) repository aan en stuur ons per mail de gegevens om de
 1. `npm install`
 2. `node_modules/.bin/json-server --watch db.json`
 
-Zodra je de JSON server opdracht kun je in de CLI of localhost:3000 de endpoints zien.
+Zodra je de JSON server opstart, kun je in de CLI of localhost:3000 de endpoints zien.
 
 ## User stories / requirements
 
