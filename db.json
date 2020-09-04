@@ -1,0 +1,94 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "firstName": "Jacco",
+      "infix": "de",
+      "lastName": "Leeuw",
+      "departmentId": 1,
+      "image": "https://www.nedbase.nl/app/uploads/2019/05/Jacco.png",
+      "quote": "Deze opdracht gaan we eens even goed aanvliegen!"
+    },
+    {
+      "id": 2,
+      "firstName": "Jaap",
+      "infix": "",
+      "lastName": "Walhout",
+      "departmentId": 1,
+      "image": "https://www.nedbase.nl/app/uploads/2019/03/Jaap-1.png",
+      "quote": "We gaan die klant er helemaal in meenemen!"
+    },
+    {
+      "id": 3,
+      "firstName": "Jeroen",
+      "infix": "van",
+      "lastName": "Sluijs",
+      "departmentId": 3,
+      "image": "https://www.nedbase.nl/app/uploads/2019/05/Jeroen.png",
+      "quote": "Je kunt er uren over lullen, maar je moet het ook gewoon doen!"
+    },
+    {
+      "id": 4,
+      "firstName": "Jurgen",
+      "infix": "",
+      "lastName": "Franse",
+      "departmentId": 3,
+      "image": "https://www.nedbase.nl/app/uploads/2019/05/Jurgen.png",
+      "quote": "Heb je erover nagedacht dat je het ook zo doen?"
+    },
+    {
+      "id": 5,
+      "firstName": "Jachin",
+      "infix": "",
+      "lastName": "Francke",
+      "departmentId": 2,
+      "image": "https://www.nedbase.nl/app/uploads/2019/05/Jachin.png",
+      "quote": "Het maakt me niet uit wat je doet, als je het maar kunt uitleggen!"
+    },
+    {
+      "id": 6,
+      "firstName": "Niels",
+      "infix": "",
+      "lastName": "Gertzen",
+      "departmentId": 2,
+      "image": "https://www.nedbase.nl/app/uploads/2019/05/Niels.png",
+      "quote": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 7,
+      "firstName": "Alicia",
+      "infix": "van",
+      "lastName": "Bekkum",
+      "departmentId": 4,
+      "image": "https://www.nedbase.nl/app/uploads/2019/05/Alicia.png",
+      "quote": "Dit ziet er gewoon echt vet uit zo!"
+    },
+    {
+      "id": 8,
+      "firstName": "Laurens",
+      "infix": "",
+      "lastName": "Almekinders",
+      "departmentId": 4,
+      "image": "https://www.nedbase.nl/app/uploads/2019/05/Laurens.png",
+      "quote": "Ik weet niet, er mist gewoon nog iets.. misschien een beetje meer van dit of dat!"
+    }
+  ],
+  "departments": [
+    {
+      "id": 1,
+      "title": "Directie"
+    },
+    {
+      "id": 2,
+      "title": "Front end development"
+    },
+    {
+      "id": 3,
+      "title": "Back end development"
+    },
+    {
+      "id": 4,
+      "title": "Design en UX"
+    }
+  ]
+}
