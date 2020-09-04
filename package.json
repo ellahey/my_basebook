@@ -2,10 +2,10 @@
   "name": "code-challenge-basebook",
   "version": "1.0.0",
   "description": "`\"Basebook\"` - smoelenboek van Nedbase",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "json-server": "^0.16.1"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nedbase/code-challenge-basebook.git"
