@@ -1,22 +1,33 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { getDepartments } from './Data.js';
 
 function App() {
+  const [depts, setDepts] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+
+  useEffect(() => {
+    getDepartments()
+      .then(data => {
+        console.log('Departments fetched:', data);
+        setDepts(data); 
+        setLoading(false); 
+      });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2>Departments</h2>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ul>
+          {depts.map((dept) => (  
+            <li key={dept.id}>{dept.title}</li> 
+          ))}
+        </ul>
+        )}
       </header>
     </div>
   );
