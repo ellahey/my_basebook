@@ -1,32 +1,55 @@
+//App.js
+
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { getDepartments } from './Data.js';
+import { getPeople, getDepartments } from './Data';
 
 function App() {
-  const [depts, setDepts] = useState([]); 
-  const [loading, setLoading] = useState(true); 
+  const [people, setPeople] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getDepartments()
-      .then(data => {
-        console.log('Departments fetched:', data);
-        setDepts(data); 
-        setLoading(false); 
+    Promise.all([getPeople(), getDepartments()])
+      .then(([peopleData, departmentsData]) => {
+        const mergedData = peopleData.map(person => {
+          const department = departmentsData.find(dept => dept.id === person.departmentId);
+          return {
+            ...person,
+            departmentTitle: department ? department.title : 'Unknown',
+          };
+        });
+        setPeople(mergedData);
+        setDepartments(departmentsData);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
       });
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Departments</h2>
+        <h2>Employees by Department</h2>
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <ul>
-          {depts.map((dept) => (  
-            <li key={dept.id}>{dept.title}</li> 
-          ))}
-        </ul>
+          <div>
+            {departments.map(dept => (
+              <div key={dept.id}>
+                <h3>{dept.title}</h3>
+                <ul>
+                  {people.map(person => (
+                        <li key={person.id}>
+                          <p>{person.firstName} {person.infix} {person.lastName} - "{person.quote}"</p>
+                        </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         )}
       </header>
     </div>
