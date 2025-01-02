@@ -1,35 +1,34 @@
-const TeamCard = ({ person }) => {
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-    if(person.image === null) {
-      person.image = "https://via.placeholder.com/150";
-    }
-  
-    return (
-      <div className="w-full px-4 md:w-1/2 xl:w-1/4">
-        <div className="mx-auto mb-10 w-full max-w-[370px]">
-          <div className="relative overflow-hidden rounded-lg">
-            <img
-             src={person.image} 
-             alt="employee"
-         
-             className="w-full"
-          
-            />
-            <div className="absolute bottom-5 left-0 w-full text-center">
-              <div className="relative mx-5 overflow-hidden rounded-lg bg-white px-3 py-5 dark:bg-dark-2">
-                <h3 className="text-base font-semibold text-dark dark:text-white">
-               
-                </h3>
-                <p className="text-xs text-body-color dark:text-dark-6">
-               
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-  
-  export { TeamCard };
-  
+const TeamCard = ({ name, quote, src }) => {
+  return (
+    <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        sx={{ height: 140 }}
+        image={src}
+        title={name}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {name}
+        </Typography>
+        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+          {quote}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Share</Button>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
+  );
+}
+
+export default TeamCard;
+

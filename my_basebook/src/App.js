@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import { getPeople, getDepartments } from './Data';
-import { TeamCard } from  './components/Teamcard';
-import { getImage } from './components/Image';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { getPeople, getDepartments } from "./Data";
+import TeamCard from "./components/Teamcard";
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -17,19 +16,20 @@ function App() {
           getPeople(),
         ]);
 
-      // Dept. map
+        // Dept. key-value map
         const departmentMap = Object.fromEntries(
-          departmentsData.map(dept => [dept.id, dept.title])
+          departmentsData.map((dept) => [dept.id, dept.title])
         );
 
-        const peopleWithDepartments = peopleData.map(person => {
-          const department = departmentMap[person.departmentId] || "Unknown Department";
-          const image = getImage(person);
-          return { ...person, department, image };
+        // People-dept mapping
+        const peopleWithDepartments = peopleData.map((person) => {
+          const department =
+            departmentMap[person.departmentId] || "Unknown Department";
+          return { ...person, department };
         });
+
         setDepartments(departmentsData);
         setPeople(peopleWithDepartments);
-
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -41,9 +41,9 @@ function App() {
   }, []);
 
   // Group by dept.
-  const peopleGroupedByDepartment = departments.map(dept => ({
+  const peopleGroupedByDepartment = departments.map((dept) => ({
     ...dept,
-    employees: people.filter(person => person.department === dept.title),
+    employees: people.filter((person) => person.department === dept.title),
   }));
 
   return (
@@ -54,26 +54,22 @@ function App() {
           <p>Loading...</p>
         ) : (
           <div>
-            {peopleGroupedByDepartment.map(dept => (
+            {peopleGroupedByDepartment.map((dept) => (
               <div key={dept.id}>
                 <h3>{dept.title}</h3>
                 {dept.employees.length > 0 ? (
                   <ul>
-                    {dept.employees.map(person => {
-                  
+                    {dept.employees.map((person) => {
                       return (
                         <li key={person.id}>
-                          <div className="-mx-4 flex flex-wrap justify-center">
-                          <TeamCard person={person} 
-                            name={`${person.firstName} ${person.infix || ''} ${person.lastName}`}
-                            quote={person.quote || ''}
-                            imageSrc={person.image} crossorigin="anonymous" 
+                          <div className="Card">
+                            <TeamCard
+                              name={`${person.firstName} ${person.infix || ""} ${person.lastName}`}
+                              quote={person.quote || ""}
+                              src={person.image}
+                            />
                             
-                          />
                           </div>
-                          <p>
-                            {person.firstName} {person.infix || ''} {person.lastName} - "{person.quote || ''}"
-                          </p>
                         </li>
                       );
                     })}
