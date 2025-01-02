@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { getPeople, getDepartments } from './Data';
+import { TeamCard } from  './components/Teamcard';
+import { getImage } from './components/Image';
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -22,12 +24,12 @@ function App() {
 
         const peopleWithDepartments = peopleData.map(person => {
           const department = departmentMap[person.departmentId] || "Unknown Department";
-          return { ...person, department };
+          const image = getImage(person);
+          return { ...person, department, image };
         });
-
-       
         setDepartments(departmentsData);
         setPeople(peopleWithDepartments);
+
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -47,7 +49,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Employees by Department</h2>
+        <h2>Meet The Team</h2>
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -57,13 +59,24 @@ function App() {
                 <h3>{dept.title}</h3>
                 {dept.employees.length > 0 ? (
                   <ul>
-                    {dept.employees.map(person => (
-                      <li key={person.id}>
-                        <p>
-                          {person.firstName} {person.infix || ''} {person.lastName} - "{person.quote || ''}"
-                        </p>
-                      </li>
-                    ))}
+                    {dept.employees.map(person => {
+                  
+                      return (
+                        <li key={person.id}>
+                          <div className="-mx-4 flex flex-wrap justify-center">
+                          <TeamCard person={person} 
+                            name={`${person.firstName} ${person.infix || ''} ${person.lastName}`}
+                            quote={person.quote || ''}
+                            imageSrc={person.image} crossorigin="anonymous" 
+                            
+                          />
+                          </div>
+                          <p>
+                            {person.firstName} {person.infix || ''} {person.lastName} - "{person.quote || ''}"
+                          </p>
+                        </li>
+                      );
+                    })}
                   </ul>
                 ) : (
                   <p>No employees in this department.</p>
