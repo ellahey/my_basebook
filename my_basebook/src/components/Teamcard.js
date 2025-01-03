@@ -3,7 +3,6 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { on } from "nodemon";
 
 const TeamCard = ({ name, quote, src, alt }) => {
   const [imageSrc, setImageSrc] = useState(src);
@@ -27,12 +26,12 @@ const TeamCard = ({ name, quote, src, alt }) => {
 
 
 
-  onmouseenter = () => {
-    quote.style.visibility = "visible";
-  };
+  // const onmouseenter = () => {
+  //   quote.style.visibility = "visible";
+  // };
 
-  onmouseleave = () => {
-  quote.style.visibility = "hidden";
+  // const onmouseleave = () => {
+  // quote.style.visibility = "hidden";
 
   const handleError = (event) => {
     console.error("Image failed to load:", {
@@ -72,5 +71,5 @@ const TeamCard = ({ name, quote, src, alt }) => {
     </CardActionArea>
   );
 };
-}
+
 export default TeamCard;

@@ -56,27 +56,27 @@ function App() {
           <p>Loading...</p>
         ) : (
           <div className="main-container">
-            {peopleGroupedByDepartment.map((dept) => (
-              <div key={dept.id}>
-                <h3>{dept.title}</h3>
-                {dept.employees.length > 0 ? (
-                  <div className="grid-container">
-                    {dept.employees.map((person) => (
-                      <div key={person.id} className="grid-item">
-                        <TeamCard
-                          name={`${person.firstName} ${person.infix || ""} ${
-                            person.lastName
-                          }`}
-                          quote={person.quote || ""}
-                          src={person.image || './avatar.png'}
-                          alt={person.firstName}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <p>No employees in this department.</p>
-                )}
+          {peopleGroupedByDepartment.map((dept) => (
+            <div key={dept.id}>
+              <h3>{dept.title}</h3>
+              {dept.employees.length > 0 ? (
+                <div className="grid-container">
+                  {dept.employees.map((person) => (
+                    <div key={person.id} className="grid-item">
+                      <TeamCard
+                        name={`${person.firstName} ${person.infix || ""} ${
+                          person.lastName
+                        }`}
+                        quote={person.quote || ""}
+                        src={person.image || './avatar.png'}
+                        alt={person.firstName}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>No employees in this department.</p>
+              )}
               </div>
             ))}
           </div>

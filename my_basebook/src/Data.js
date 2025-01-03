@@ -1,4 +1,4 @@
-//Data.js
+
 
 const dept_path = 'http://localhost:3000/departments'
 const people_path = 'http://localhost:3000/people'
