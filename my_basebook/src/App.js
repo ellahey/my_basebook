@@ -3,6 +3,7 @@ import "./App.css";
 import { getPeople, getDepartments } from "./Data";
 import TeamCard from "./components/Teamcard";
 
+
 function App() {
   const [people, setPeople] = useState([]);
   const [departments, setDepartments] = useState([]);
@@ -53,27 +54,25 @@ function App() {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <div>
+          <div className="main-container">
             {peopleGroupedByDepartment.map((dept) => (
               <div key={dept.id}>
                 <h3>{dept.title}</h3>
                 {dept.employees.length > 0 ? (
-                  <ul>
-                    {dept.employees.map((person) => {
-                      return (
-                        <li key={person.id}>
-                          <div className="Card">
-                            <TeamCard
-                              name={`${person.firstName} ${person.infix || ""} ${person.lastName}`}
-                              quote={person.quote || ""}
-                              src={person.image}
-                            />
-                            
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <div className="grid-container">
+                    {dept.employees.map((person) => (
+                      <div key={person.id} className="grid-item">
+                        <TeamCard
+                          name={`${person.firstName} ${person.infix || ""} ${
+                            person.lastName
+                          }`}
+                          quote={person.quote || ""}
+                          src={person.image || './avatar.png'}
+                          alt={person.firstName}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 ) : (
                   <p>No employees in this department.</p>
                 )}

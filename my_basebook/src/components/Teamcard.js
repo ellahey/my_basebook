@@ -1,34 +1,47 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import React, { useState } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
-const TeamCard = ({ name, quote, src }) => {
+const TeamCard = ({ name, quote, src, alt }) => {
+  const [imageSrc, setImageSrc] = useState(src);
+  const fallbackImage = "./avatar.png";
+
+  const handleError = (event) => {
+    console.error("Image failed to load:", {
+      attemptedUrl: imageSrc,
+      errorEvent: event,
+    });
+
+    if (imageSrc !== fallbackImage) {
+      setImageSrc(fallbackImage);
+    }
+  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image={src}
-        title={name}
-      />
+      <div style={{ height: 200, display: "flex", justifyContent: "center" }}>
+        <img
+          src={imageSrc}
+          alt={alt}
+          onError={handleError}
+          style={{
+            height: "100%",
+            width: "auto",
+            objectFit: "contain",
+          }}
+        />
+      </div>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
           {quote}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
-}
+};
 
 export default TeamCard;
-
