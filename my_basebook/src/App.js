@@ -51,6 +51,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h2>Meet The Team</h2>
+        </header>
         {loading ? (
           <p>Loading...</p>
         ) : (
@@ -80,7 +81,6 @@ function App() {
             ))}
           </div>
         )}
-      </header>
     </div>
   );
 }

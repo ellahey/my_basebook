@@ -1,14 +1,21 @@
 
- .main-container {
-  
-  margin: 0 auto; 
+h2{
+  margin-left: 25%; 
+  margin-right: 25%;
+}
+
+.main-container {
+  margin-left: 25%; 
+  margin-right: 25%;
   padding: 16px;
 }
+
  .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 16px;
   margin: 16px 0;
+  padding-bottom: 25px;
 }
 
 .grid-item {
@@ -19,3 +26,6 @@
 .MuiCardMedia-media {
     object-fit: scale-down;
 }
+
+
+
