@@ -27,5 +27,9 @@ h2{
     object-fit: scale-down;
 }
 
+.Card:hover {
+  font-weight: bold;
+  }
+
 
 
