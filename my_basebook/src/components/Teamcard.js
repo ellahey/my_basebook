@@ -10,7 +10,7 @@ const TeamCard = ({ name, quote, src, alt }) => {
 
   const generateImageUrl = (src) => {
     const largerImage = src;
-  if (src) {
+    if (src) {
       return largerImage;
     }
     return fallbackImage;
@@ -43,7 +43,17 @@ const TeamCard = ({ name, quote, src, alt }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ 
+      "&:hover": {
+        borderTopLeftRadius: "10px",
+        borderBottomLeftRadius: "10px",
+        animationName: "ffect",
+        animationDuration: "0.25s",
+        borderLeft: "8px #ffa2b6 solid",
+        boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)"
+      },
+      maxWidth: 345 
+    }}>
       <div style={{ height: 200, display: "flex", justifyContent: "center" }}>
         <img
           onClick={handleClick}
@@ -57,6 +67,7 @@ const TeamCard = ({ name, quote, src, alt }) => {
             width: "auto",
             objectFit: 'contain',
             cursor: "pointer",
+            margin: "10px"
           }}
         />
       </div>
@@ -81,5 +92,4 @@ const TeamCard = ({ name, quote, src, alt }) => {
     </Card>
   );
 };
-
 export default TeamCard;
